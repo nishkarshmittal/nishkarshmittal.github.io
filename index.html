@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{color-scheme:light dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<meta property="og:title" content="Nishkarsh Mittal">
+<meta property="og:description" content="M.S. Applied Data Science at USC (May 2027). Data engineering, data science, machine learning and software engineering.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nishkarshmittal.github.io/">
+<title>Nishkarsh Mittal</title>
+<meta name="description" content="Nishkarsh Mittal — M.S. Applied Data Science at USC (May 2027). Data engineering, data science, machine learning and software engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one left-aligned 1100px column. Hero states who he is, then a three-stage Data → Models → Software
+   schematic maps his skills to the roles he's targeting. Sections below sit as label-rail + content on desktop
+   and stack on phones. Boldness lives in the name and the flowing pipeline; everything else stays quiet. */
+:root{
+  --bg:#EFF3F2;
+  --surface:#FFFFFF;
+  --ink:#11201D;
+  --muted:#53635E;
+  --line:#D2DCD9;
+  --accent:#0A6A5F;
+  --accent-soft:#DCECE8;
+  --signal:#B4651A;
+  --font-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --t-xs:.8125rem; --t-sm:.9375rem; --t-base:1rem; --t-md:1.1875rem; --t-lg:1.5rem; --t-xl:2rem;
+  --t-hero:clamp(2.75rem,8vw,5.5rem);
+  --radius:10px;
+  --wrap:1100px;
+  --header-h:60px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1513; --surface:#141E1C; --ink:#E3ECE9; --muted:#97A8A3; --line:#25332F;
+    --accent:#5CC3B4; --accent-soft:#16302B; --signal:#E8A250; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1513; --surface:#141E1C; --ink:#E3ECE9; --muted:#97A8A3; --line:#25332F;
+  --accent:#5CC3B4; --accent-soft:#16302B; --signal:#E8A250; color-scheme:dark;
+}
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--font-body); font-size:var(--t-base); line-height:1.6;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+h1,h2,h3{margin:0;font-family:var(--font-display);text-wrap:balance;line-height:1.1}
+p{margin:0}
+ul,ol{margin:0;padding:0}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+::selection{background:var(--accent-soft)}
+
+.wrap{
+  max-width:var(--wrap); margin-inline:auto;
+  padding-left:max(16px, env(safe-area-inset-left,0px));
+  padding-right:max(16px, env(safe-area-inset-right,0px));
+}
+.mono{font-family:var(--font-mono)}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
+  background:color-mix(in srgb, var(--bg) 90%, transparent);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex;align-items:center;gap:20px;min-height:var(--header-h)}
+.brand{font-family:var(--font-display);font-weight:700;font-size:var(--t-base);color:var(--ink);text-decoration:none;white-space:nowrap;letter-spacing:-.01em}
+.brand .short{display:none}
+.nav{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav::-webkit-scrollbar{display:none}
+.nav a{
+  font-size:var(--t-sm);color:var(--muted);text-decoration:none;white-space:nowrap;
+  padding:6px 10px;border-radius:6px;
+}
+.nav a:hover{color:var(--ink);background:var(--accent-soft)}
+@media (max-width:620px){
+  .brand .full{display:none}
+  .brand .short{display:inline}
+  .nav a{padding:6px 8px}
+}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(48px,9vw,96px) 40px;display:grid;gap:22px}
+.eyebrow{
+  font-family:var(--font-mono);font-size:var(--t-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+}
+.hero h1{
+  font-size:var(--t-hero);font-weight:800;letter-spacing:-.035em;line-height:.95;
+  font-variation-settings:"opsz" 96;
+}
+.lede{font-size:clamp(1.1875rem,2.4vw,1.5rem);line-height:1.45;max-width:34ch;color:var(--ink)}
+.status{
+  display:inline-flex;align-items:center;gap:10px;justify-self:start;
+  font-size:var(--t-sm);font-weight:500;
+  padding:7px 14px 7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 4px color-mix(in srgb, var(--signal) 22%, transparent)}
+.contact-row{display:flex;flex-wrap:wrap;gap:10px 22px;list-style:none;align-items:center;font-size:var(--t-sm)}
+.contact-row li{display:flex;align-items:center;gap:8px;min-width:0}
+.contact-row .muted{color:var(--muted)}
+.email{font-family:var(--font-mono);font-size:var(--t-sm);color:var(--ink);overflow-wrap:anywhere}
+.copy{
+  font:500 var(--t-xs)/1 var(--font-body);color:var(--accent);background:transparent;
+  border:1px solid var(--line);border-radius:6px;padding:5px 9px;cursor:pointer;
+}
+.copy:hover{background:var(--accent-soft);border-color:transparent}
+
+/* ---------- pipeline ---------- */
+.fit{padding-block:8px 64px}
+.fit-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-bottom:20px}
+.fit-head h2{font-size:var(--t-lg);font-weight:700;letter-spacing:-.01em}
+.fit-head p{color:var(--muted);font-size:var(--t-sm);max-width:60ch}
+.stages{display:grid;grid-template-columns:1fr;gap:30px;list-style:none}
+.stage{
+  position:relative;min-width:0;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;display:flex;flex-direction:column;gap:10px;
+}
+.stage-name{font-size:var(--t-xl);font-weight:700;letter-spacing:-.02em}
+.stage-what{color:var(--muted);font-size:var(--t-sm)}
+.roles{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:6px;list-style:none}
+.roles li{
+  font-family:var(--font-mono);font-size:var(--t-xs);color:var(--accent);
+  background:var(--accent-soft);padding:3px 8px;border-radius:5px;
+}
+/* connector: vertical on phones, horizontal on desktop */
+.stage:not(:last-child)::after{
+  content:"";position:absolute;left:50%;top:100%;width:2px;height:22px;transform:translateX(-50%);
+  background:repeating-linear-gradient(to bottom,var(--signal) 0 6px,transparent 6px 12px);
+  background-size:2px 12px;animation:flow-v .9s linear infinite;
+}
+.stage:not(:last-child)::before{
+  content:"";position:absolute;left:50%;top:calc(100% + 21px);transform:translateX(-50%);
+  border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid var(--signal);
+}
+@media (min-width:860px){
+  .stages{grid-template-columns:repeat(3,minmax(0,1fr));gap:56px}
+  .stage:not(:last-child)::after{
+    left:100%;top:50%;width:46px;height:2px;transform:translateY(-50%);
+    background:repeating-linear-gradient(to right,var(--signal) 0 6px,transparent 6px 12px);
+    background-size:12px 2px;animation-name:flow-h;
+  }
+  .stage:not(:last-child)::before{
+    left:calc(100% + 45px);top:50%;transform:translateY(-50%);
+    border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:8px solid var(--signal);border-right:0;
+  }
+}
+@keyframes flow-h{to{background-position:12px 0}}
+@keyframes flow-v{to{background-position:0 12px}}
+@media (prefers-reduced-motion: reduce){.stage::after{animation:none!important}}
+.fit-example{margin-top:20px;font-size:var(--t-sm);color:var(--muted);max-width:75ch}
+.fit-example strong{color:var(--ink);font-weight:600}
+
+/* ---------- sections ---------- */
+.section{border-top:1px solid var(--line);scroll-margin-top:calc(var(--header-h) + env(safe-area-inset-top,0px))}
+.section-inner{display:grid;gap:24px;padding-block:56px}
+@media (min-width:860px){
+  .section-inner{grid-template-columns:200px minmax(0,1fr);gap:40px;padding-block:72px}
+  .section-label{position:sticky;top:calc(var(--header-h) + env(safe-area-inset-top,0px) + 24px);align-self:start}
+}
+.section-label h2{font-size:var(--t-xl);font-weight:700;letter-spacing:-.02em}
+.section-label .count{display:block;margin-top:6px;font-family:var(--font-mono);font-size:var(--t-xs);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.section-body{min-width:0}
+
+/* about */
+.about{display:grid;gap:32px}
+@media (min-width:980px){.about{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px}}
+.prose{display:grid;gap:16px;font-size:var(--t-md);line-height:1.65;max-width:62ch}
+.prose p:first-child{font-size:1.3125rem;line-height:1.5}
+.edu{display:grid;gap:14px;list-style:none;align-content:start}
+.edu li{padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);display:grid;gap:4px}
+.edu .school{font-weight:600}
+.edu .degree{font-size:var(--t-sm)}
+.edu .when{font-family:var(--font-mono);font-size:var(--t-xs);color:var(--muted)}
+.edu .courses{font-size:var(--t-xs);color:var(--muted);margin-top:4px}
+
+/* projects */
+.projects{display:grid;gap:20px}
+@media (min-width:760px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.project{
+  min-width:0;display:flex;flex-direction:column;gap:14px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;
+  transition:border-color .2s ease;
+}
+.project:hover{border-color:color-mix(in srgb, var(--accent) 45%, var(--line))}
+.p-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center}
+.tracks{display:flex;gap:6px;list-style:none;flex-wrap:wrap}
+.tracks li{
+  font-family:var(--font-mono);font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:2px 7px;
+}
+.date{font-family:var(--font-mono);font-size:var(--t-xs);color:var(--muted);font-variant-numeric:tabular-nums}
+.project h3{font-size:1.375rem;font-weight:700;letter-spacing:-.015em}
+.result{font-family:var(--font-mono);font-size:var(--t-sm);color:var(--accent);line-height:1.45}
+.bullets{display:grid;gap:8px;padding-left:1.1em;font-size:var(--t-sm);color:var(--ink)}
+.bullets li::marker{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin-top:auto;padding-top:4px}
+.chips li{
+  font-family:var(--font-mono);font-size:.75rem;color:var(--ink);
+  background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:3px 8px;
+}
+.more{margin-top:20px;font-size:var(--t-sm)}
+.p-link{font-size:var(--t-sm);font-weight:500}
+.n{font-weight:600;font-variant-numeric:tabular-nums}
+
+/* experience */
+.jobs{display:grid;gap:36px;list-style:none;position:relative;padding-left:24px}
+.jobs::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.job{position:relative;display:grid;gap:10px}
+.job::before{
+  content:"";position:absolute;left:-24px;top:7px;width:12px;height:12px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent);
+}
+.job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline}
+.job h3{font-size:var(--t-lg);font-weight:700;letter-spacing:-.015em}
+.job .role{font-weight:500}
+.job .role span{color:var(--muted);font-weight:400}
+
+/* skills */
+.skills{display:grid;gap:28px}
+@media (min-width:700px){.skills{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 40px}}
+.skill-group{display:grid;gap:10px;align-content:start}
+.skill-group h3{
+  font-family:var(--font-mono);font-size:var(--t-xs);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+}
+.skill-group .chips{margin-top:0;padding-top:0}
+.skill-group .chips li{background:var(--surface);font-size:var(--t-xs);padding:4px 9px}
+
+/* publications */
+.pubs{display:grid;list-style:none}
+.pub{display:grid;gap:6px;padding-block:18px;border-bottom:1px solid var(--line)}
+.pub:first-child{padding-top:0}
+.pub:last-child{border-bottom:0}
+.pub-kind{font-family:var(--font-mono);font-size:var(--t-xs);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.pub-title{font-weight:600;font-size:var(--t-md);line-height:1.4}
+.pub-venue{font-size:var(--t-sm);color:var(--muted)}
+
+/* contact */
+.contact{border-top:1px solid var(--line);scroll-margin-top:calc(var(--header-h) + env(safe-area-inset-top,0px))}
+.contact-inner{padding-block:72px 40px;display:grid;gap:20px}
+.contact h2{font-size:clamp(2.25rem,6vw,3.75rem);font-weight:800;letter-spacing:-.03em}
+.contact p{font-size:var(--t-md);max-width:58ch;color:var(--muted)}
+.contact-box{
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;justify-self:start;max-width:100%;
+  padding:16px 20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+}
+.contact-box .email{font-size:var(--t-md)}
+.contact-methods{display:flex;flex-wrap:wrap;gap:12px;max-width:100%}
+.contact-kind{font-family:var(--font-mono);font-size:var(--t-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:3.5em}
+.contact-links{display:flex;flex-wrap:wrap;gap:8px 24px;list-style:none;font-size:var(--t-sm)}
+.foot{padding-block:28px 40px;font-size:var(--t-xs);color:var(--muted);font-family:var(--font-mono);display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="full">Nishkarsh Mittal</span><span class="short">NM</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap" aria-labelledby="name">
+    <p class="eyebrow">M.S. Applied Data Science · University of Southern California · Class of 2027</p>
+    <h1 id="name">Nishkarsh Mittal</h1>
+    <p class="lede">I build data pipelines, machine learning models, and the software that puts them to work.</p>
+    <p class="status"><span class="dot" aria-hidden="true"></span>Open to full-time roles starting May 2027</p>
+    <ul class="contact-row">
+      <li><a class="email" id="email-hero" href="mailto:nishkars@usc.edu">nishkars@usc.edu</a><button class="copy" type="button" id="copy-hero" data-copy="nishkars@usc.edu" data-target="email-hero">Copy</button></li>
+      <li><a href="https://github.com/nishkarshmittal" target="_blank" rel="noopener">GitHub ↗</a></li>
+      <li><a href="https://www.linkedin.com/in/nishkarsh-mittal-5aa98924b/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li class="muted">Los Angeles, CA</li>
+    </ul>
+  </section>
+
+  <section class="fit wrap" aria-labelledby="fit-title">
+    <div class="fit-head">
+      <h2 id="fit-title">Where I fit</h2>
+      <p>My work covers the full path from raw data to a product people use. These are the roles I'm applying for.</p>
+    </div>
+    <ol class="stages">
+      <li class="stage">
+        <h3 class="stage-name">Data</h3>
+        <p class="stage-what">ETL pipelines in Airflow and PySpark, SQL schema and index design, analysis in Pandas, dashboards in Tableau and Power BI.</p>
+        <ul class="roles"><li>Data Engineer</li><li>Data Analyst</li></ul>
+      </li>
+      <li class="stage">
+        <h3 class="stage-name">Models</h3>
+        <p class="stage-what">Supervised learning with XGBoost and scikit-learn, deep learning and reinforcement learning in PyTorch, computer vision with YOLO and OpenCV.</p>
+        <ul class="roles"><li>Data Scientist</li><li>ML Engineer</li><li>Deep Learning Engineer</li></ul>
+      </li>
+      <li class="stage">
+        <h3 class="stage-name">Software</h3>
+        <p class="stage-what">REST APIs in FastAPI and Flask, React front ends, Docker, AWS and CI pipelines that keep things tested and running.</p>
+        <ul class="roles"><li>Software Engineer (SDE 1)</li></ul>
+      </li>
+    </ol>
+    <p class="fit-example"><strong>Example:</strong> <a href="#flight">Flight Delay Prediction</a> uses all three stages: an Airflow ETL into MySQL, an XGBoost model tracked in MLflow, and a FastAPI service running on AWS.</p>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap section-inner">
+      <div class="section-label"><h2 id="about-title">About</h2></div>
+      <div class="section-body about">
+        <div class="prose">
+          <p>I'm a master's student in Applied Data Science at USC, graduating in May 2027, with a B.Tech in Artificial Intelligence and Data Science from GGSIPU in New Delhi.</p>
+          <p>I like work that runs end to end: getting messy data into shape, training a model that holds up, and shipping it behind an API or a dashboard someone can actually use. Recently that has meant a reinforcement-learning navigation stack for drones in ROS and PyTorch, and a flight-delay prediction system built on Airflow, MySQL and XGBoost.</p>
+          <p>Before USC, I interned as a data scientist at Asian Footwears and as a machine learning intern at Mindspace.Club. I also care about automation and visual design, which shows up in the tools I build: scripts that save people hours, and dashboards that make data easy to read.</p>
+        </div>
+        <ul class="edu" aria-label="Education">
+          <li>
+            <span class="school">University of Southern California</span>
+            <span class="degree">M.S. Applied Data Science</span>
+            <span class="when">Aug 2025 – May 2027 · Los Angeles, CA</span>
+            <span class="courses">Machine Learning, Deep Learning, Data Management, Data Visualization, Web Technologies</span>
+          </li>
+          <li>
+            <span class="school">Guru Gobind Singh Indraprastha University</span>
+            <span class="degree">B.Tech, Artificial Intelligence and Data Science</span>
+            <span class="when">Nov 2021 – May 2025 · New Delhi, India</span>
+            <span class="courses">NLP, Computer Vision, Reinforcement Learning, Recommender Systems, Foundations of AI</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="wrap section-inner">
+      <div class="section-label"><h2 id="projects-title">Projects</h2><span class="count">4 selected</span></div>
+      <div class="section-body">
+        <div class="projects">
+          <article class="project" id="flight">
+            <div class="p-meta">
+              <ul class="tracks" aria-label="Stages"><li>Data</li><li>Models</li><li>Software</li></ul>
+              <span class="date">Oct 2026</span>
+            </div>
+            <h3>Flight Delay Prediction System</h3>
+            <p class="result">Ingest → model → serve, end to end</p>
+            <ul class="bullets">
+              <li>Built an Airflow and PySpark ETL pipeline that joins BTS flight records with NOAA weather data and loads them into MySQL.</li>
+              <li>Tuned MySQL physical design with composite indexes and partitioning, and benchmarked the effect on query latency.</li>
+              <li>Trained an XGBoost delay classifier tracked in MLflow and served it through a FastAPI endpoint in Docker on AWS EC2, with GitLab CI running automated tests.</li>
+            </ul>
+            <ul class="chips" aria-label="Tools"><li>Airflow</li><li>PySpark</li><li>MySQL</li><li>XGBoost</li><li>MLflow</li><li>FastAPI</li><li>Docker</li><li>AWS EC2</li><li>GitLab CI</li></ul>
+          </article>
+
+          <article class="project" id="drone">
+            <div class="p-meta">
+              <ul class="tracks" aria-label="Stages"><li>Models</li><li>Software</li></ul>
+              <span class="date">Jun 2026</span>
+            </div>
+            <h3>Autonomous Drone Navigation System</h3>
+            <p class="result">Navigation success 7% → 100%, zero collisions</p>
+            <ul class="bullets">
+              <li>Wrote a 4-node ROS package (about <span class="n">6,400</span> lines) that fuses YOLO and OpenCV into an obstacle-detection pipeline running at about <span class="n">2 ms</span> per frame, mapped to an 8-band occupancy vector.</li>
+              <li>Built PPO and Double Dueling DQN agents from scratch in PyTorch, then found and fixed reward-hacking defects that were holding sequential navigation success at <span class="n">7%</span>.</li>
+              <li>Added a 5-tier deterministic safety supervisor with emergency braking, geofencing and speed tapers that limits what the learned policy is allowed to do.</li>
+            </ul>
+            <ul class="chips" aria-label="Tools"><li>Python</li><li>PyTorch</li><li>ROS</li><li>YOLO</li><li>OpenCV</li></ul>
+          </article>
+
+          <article class="project" id="nifty">
+            <div class="p-meta">
+              <ul class="tracks" aria-label="Stages"><li>Data</li><li>Models</li><li>Software</li></ul>
+              <span class="date">May 2025</span>
+            </div>
+            <h3>ML-Based Quant Trading Strategy on NIFTY 50</h3>
+            <p class="result">+18% portfolio Sharpe ratio · presented at IEEE ICACT 2025</p>
+            <ul class="bullets">
+              <li>Trained XGBoost, Random Forest and LSTM models on <span class="n">8 years</span> of NIFTY 50 data to generate trading signals.</li>
+              <li>Pulled <span class="n">500,000+</span> daily data points from the Yahoo Finance and Upstox APIs and built Tableau dashboards for long-run trends and volatility.</li>
+              <li>Built a React and PostgreSQL web app with Clerk authentication for portfolio tracking and stock search across all 50 NIFTY companies.</li>
+            </ul>
+            <ul class="chips" aria-label="Tools"><li>Python</li><li>XGBoost</li><li>LSTM</li><li>Tableau</li><li>React</li><li>PostgreSQL</li></ul>
+            <a class="p-link" href="https://github.com/nishkarshmittal/QUANT-TRADING-STRATEGY" target="_blank" rel="noopener">View code on GitHub ↗</a>
+          </article>
+
+          <article class="project" id="segmentation">
+            <div class="p-meta">
+              <ul class="tracks" aria-label="Stages"><li>Data</li><li>Models</li></ul>
+              <span class="date">Mar 2025</span>
+            </div>
+            <h3>Customer Segmentation</h3>
+            <p class="result">Top segment spends 20× more and buys 3× as often</p>
+            <ul class="bullets">
+              <li>Cleaned a raw set of <span class="n">400,000+</span> transactions into a structured dataset of <span class="n">350,000</span> records.</li>
+              <li>Segmented <span class="n">4,000+</span> customers with an RFM-based K-Means model and compared spending and purchase frequency across tiers.</li>
+            </ul>
+            <ul class="chips" aria-label="Methods"><li>K-Means</li><li>RFM analysis</li><li>Data cleaning</li></ul>
+            <a class="p-link" href="https://github.com/nishkarshmittal/CUSTOMER-SEGMENTATION" target="_blank" rel="noopener">View code on GitHub ↗</a>
+          </article>
+        </div>
+        <p class="more">More code on <a href="https://github.com/nishkarshmittal" target="_blank" rel="noopener">GitHub ↗</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="experience-title">
+    <div class="wrap section-inner">
+      <div class="section-label"><h2 id="experience-title">Experience</h2><span class="count">2 internships</span></div>
+      <div class="section-body">
+        <ol class="jobs">
+          <li class="job">
+            <div class="job-head"><h3>Asian Footwears</h3><span class="date">May 2025 – Aug 2025</span></div>
+            <p class="role">Data Scientist Intern <span>· New Delhi, India</span></p>
+            <ul class="bullets">
+              <li>Wrote a Pandas automation script that categorizes <span class="n">10,000+</span> SKUs, saving <span class="n">30+ hours</span> of manual work each week.</li>
+              <li>Analyzed <span class="n">50,000+</span> sales records and market-trend data to find consumer behavior patterns, improving targeting efficiency by <span class="n">15%</span>.</li>
+              <li>Supervised and mentored <span class="n">3</span> interns, using Agile task allocation to speed up sprint delivery by <span class="n">20%</span>.</li>
+            </ul>
+          </li>
+          <li class="job">
+            <div class="job-head"><h3>Mindspace.Club</h3><span class="date">Jan 2025 – May 2025</span></div>
+            <p class="role">Machine Learning Intern <span>· Uttar Pradesh, India</span></p>
+            <ul class="bullets">
+              <li>Improved a recommendation engine serving <span class="n">10,000+</span> users, raising personalized content accuracy by <span class="n">18%</span>.</li>
+              <li>Worked in a 5-person Agile team on sprint planning and refining the recommendation logic.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <div class="wrap section-inner">
+      <div class="section-label"><h2 id="skills-title">Skills</h2></div>
+      <div class="section-body skills">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <ul class="chips"><li>Python</li><li>SQL</li><li>Java</li><li>C++</li><li>C</li><li>JavaScript</li><li>R</li><li>HTML</li><li>CSS</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Machine learning</h3>
+          <ul class="chips"><li>PyTorch</li><li>TensorFlow</li><li>Keras</li><li>scikit-learn</li><li>XGBoost</li><li>OpenCV</li><li>YOLO</li><li>MLflow</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Data &amp; analytics</h3>
+          <ul class="chips"><li>Pandas</li><li>NumPy</li><li>PySpark</li><li>Apache Airflow</li><li>PostgreSQL</li><li>MySQL</li><li>Tableau</li><li>Power BI</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Web, cloud &amp; DevOps</h3>
+          <ul class="chips"><li>React</li><li>Node.js</li><li>FastAPI</li><li>Flask</li><li>Django</li><li>REST APIs</li><li>AWS</li><li>Docker</li><li>Git</li><li>GitLab CI</li><li>Postman</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="publications" aria-labelledby="pubs-title">
+    <div class="wrap section-inner">
+      <div class="section-label"><h2 id="pubs-title">Publications</h2><span class="count">2 papers</span></div>
+      <div class="section-body">
+        <ol class="pubs">
+          <li class="pub">
+            <span class="pub-kind">Conference paper · Sept 2025</span>
+            <span class="pub-title">Machine Learning Based Quant Trading Strategy on NIFTY50 Index</span>
+            <span class="pub-venue">IEEE International Conference on Advanced Computing Technologies (ICACT), Tirupati, India</span>
+          </li>
+          <li class="pub">
+            <span class="pub-kind">Journal article · Feb 2024</span>
+            <span class="pub-title">Visualising and Analysing the Performance of BERT on Stanford Sentiment Treebank</span>
+            <span class="pub-venue">International Journal of All Research Education and Scientific Methods (IJARESM), vol. 12, no. 2</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact-inner">
+    <h2 id="contact-title">Let's talk</h2>
+    <p>I'm looking for new-grad roles in data engineering, data science, machine learning and software engineering, starting May 2027. Reach me by email or phone.</p>
+    <div class="contact-methods">
+      <div class="contact-box">
+        <span class="contact-kind">Email</span>
+        <a class="email" id="email-foot" href="mailto:nishkars@usc.edu">nishkars@usc.edu</a>
+        <button class="copy" type="button" id="copy-foot" data-copy="nishkars@usc.edu" data-target="email-foot">Copy</button>
+      </div>
+      <div class="contact-box">
+        <span class="contact-kind">Phone</span>
+        <a class="email" id="phone-foot" href="tel:+12138872167">+1 213-887-2167</a>
+        <button class="copy" type="button" id="copy-phone" data-copy="+1 213-887-2167" data-target="phone-foot">Copy</button>
+      </div>
+    </div>
+    <ul class="contact-links">
+      <li><a href="https://www.linkedin.com/in/nishkarsh-mittal-5aa98924b/" target="_blank" rel="noopener">linkedin.com/in/nishkarsh-mittal-5aa98924b ↗</a></li>
+      <li><a href="https://github.com/nishkarshmittal" target="_blank" rel="noopener">github.com/nishkarshmittal ↗</a></li>
+    </ul>
+  </div>
+  <div class="wrap foot">
+    <span>© 2026 Nishkarsh Mittal</span>
+    <span>Los Angeles, CA</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function selectText(el){
+    try{
+      var r=document.createRange(); r.selectNodeContents(el);
+      var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }catch(e){}
+  }
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var text=btn.getAttribute('data-copy');
+      var target=document.getElementById(btn.getAttribute('data-target'));
+      var reset=function(){setTimeout(function(){btn.textContent='Copy';},1800);};
+      var fallback=function(){ if(target){selectText(target);} btn.textContent='Selected'; reset(); };
+      try{
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(function(){btn.textContent='Copied';reset();},fallback);
+        }else{ fallback(); }
+      }catch(e){ fallback(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
